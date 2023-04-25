@@ -1,0 +1,57 @@
+{
+  "name": "geonode-mapstore-client",
+  "version": "4.0.0",
+  "description": "MapStore 2 bundles specific to geonode framework",
+  "eslintConfig": {
+    "extends": [
+      "@mapstore/eslint-config-mapstore"
+    ],
+    "parserOptions": {
+      "babelOptions": {
+        "configFile": "./node_modules/mapstore/build/babel.config.js"
+      }
+    },
+    "globals": {
+      "__MAPSTORE_PROJECT_CONFIG__": false
+    }
+  },
+  "scripts": {
+    "compile": "mapstore-project compile && node postCompile && npm run docs",
+    "start": "mapstore-project start",
+    "test": "mapstore-project test",
+    "test:watch": "mapstore-project test:watch",
+    "lint": "eslint js --ext .jsx,.js --fix",
+    "docs": "jsdoc2md -f js/**/* -t README.hbs > ../../docs/client.md"
+  },
+  "author": "GeoSolutions",
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "@mapstore/project": "1.0.24",
+    "dotenv": "10.0.0",
+    "jsdoc-to-markdown": "7.1.0"
+  },
+  "dependencies": {
+    "@react-three/drei": "8.6.1",
+    "@react-three/fiber": "7.0.25",
+    "dompurify": "2.2.6",
+    "font-awesome": "4.7.0",
+    "mapstore": "file:MapStore2",
+    "react-helmet": "6.1.0",
+    "react-intl": "2.3.0",
+    "three": "0.136.0"
+  },
+  "mapstore": {
+    "output": "dist",
+    "publicPath": "/static/mapstore/dist/",
+    "themePrefix": "msgapi",
+    "apps": [
+      "js/apps"
+    ],
+    "html": [
+      ""
+    ],
+    "themes": [
+      "themes/"
+    ]
+  }
+}
